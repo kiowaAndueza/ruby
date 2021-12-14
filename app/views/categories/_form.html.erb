@@ -1,0 +1,35 @@
+<%= form_with(model: @categories, html: { method: :post} ,local: true) do |form| %>
+  <% if @categories.errors.any? %>
+      <div class="alert-danger">
+        <span>
+          Se han escontrado
+          <%= pluralize(@categories.errors.count, "error") %>:
+        </span>
+        <ul>
+          <% @categories.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </div>
+      <div class="form-group">
+        <%= form.label :img %>
+        <%= form.text_field :img %>
+      </div>
+      <div class="form-group">
+        <%= form.label :url %>
+        <%= form.text_field :url %>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mb-2 mt-4">
+    <%= form.submit "Guardar", class: "btn btn-dark" %>
+    <%= link_to 'Cancelar', categories_index_path, class: "btn btn-primary ml-2" %>
+  </div>
+<% end %>

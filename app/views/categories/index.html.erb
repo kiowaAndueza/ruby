@@ -1,0 +1,36 @@
+<section class="offset-md-1 col-md-10 col-xs-12">
+  <div class="my-3 content py-3 ">
+
+    <div class="table-responsive">
+      <div class="w-100 text-center">
+        <h1>Categorias</h1>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto border-dark" style="width: 200px;">
+      </div>
+        <div class="text-center align-right">  <%= link_to "Crear categoria", new_category_path, class: "btn btn-info " %></div>
+      <table class="table table-striped">
+        <thead>
+
+        <tr>
+          <th class="text-center">Título</th>
+          <th class="text-center" colspan="3">Acciones</th>
+        </tr>
+        </thead>
+
+        <% @categories.each do |categoria| %>
+          <tbody>
+          <tr>
+            <td class="text-center align-middle"> <%= categoria.title %> </td>
+            <td class="text-center align-middle">
+              <%= link_to "Detalles",categoria, class: "btn btn-info " %>
+              <%= link_to "Editar", edit_category_path(categoria.id), class: "btn btn-success ml-2" %>
+              <%= link_to "Eliminar", categoria, method: :delete, class: "btn btn-danger ml-2",
+                          data: { confirm: '¿Desea eliminar?'} %>
+            </td>
+          </tr>
+
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</section>
