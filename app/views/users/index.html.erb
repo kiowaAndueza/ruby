@@ -1,0 +1,37 @@
+<section class="offset-md-1 col-md-10 col-xs-12">
+  <div class="my-3 content py-3 ">
+    <div class="table-responsive">
+      <div class="w-100 text-center">
+        <h1>Usuarios</h1>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-autschema_migrationso border-dark" style="width: 200px;">
+      </div>
+      <div class="text-center align-right"> <%= link_to 'Nuevo Usuario', new_user_path, class: "btn btn-info"%></div>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Nombre de usuario</th>
+          <th>Correo electrónico</th>
+          <th>Contraseña</th>
+          <th>Imagen</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><%= user.password %></td>
+            <td><%= user.image %></td>
+            <td><%= link_to 'Detalles', user, class: "btn btn-info" %></td>
+            <td><%= link_to 'Editar', edit_user_path(user), class: "btn btn-success ml-2" %></td>
+            <td><%= link_to 'Eliminar', user, method: :delete, class: "btn btn-danger ml-2", data: { confirm: '¿Desea eliminar?' } %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="alert-danger text-end">
+      <div class="text-start">
+        Se han encontrado
+        <%= pluralize(@user.errors.count, "error") %>:
+      </div>
+      <div class="text-start">
+        <ul>
+          <% @user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group mb-4">
+        <%= form.label :username %>
+        <%= form.text_field :username %>
+      </div>
+      <div class="form-group mb-4">
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+      </div>
+      <div class="form-group mb-4">
+        <%= form.label :password %>
+        <%= form.text_field :password %>
+      </div>
+      <div class="form-group">
+        <%= form.label :image %>
+        <%= form.text_field :image %>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mb-2 mt-4">
+    <%= form.submit "Guardar", class: "btn btn-dark" %>
+    <%= link_to 'Cancelar', users_path, class: "btn btn-primary ml-2" %>
+  </div>
+<% end %>
