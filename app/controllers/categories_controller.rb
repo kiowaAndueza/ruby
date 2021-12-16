@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
   def create
     @categories = Category.create(params_categories)
     if @categories.save
-      redirect_to categories_index_path
+      redirect_to category_index_path
     else
       render 'new'
     end
@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
   def update
     @categories = Category.find(params[:id])
     if @categories.update(params_categories)
-      redirect_to categories_index_path
+      redirect_to category_index_path
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
   def delete
     @categories = Category.find(params[:id])
     @categories.destroy
-    redirect_to categories_index_path
+    redirect_to category_index_path
   end
 
   def params_categories
