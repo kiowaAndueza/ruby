@@ -54,10 +54,10 @@
               </li>
             <%else %>
               <li class="nav-item">
-                <%= link_to "Modificar datos", users_path, class: "nav-link" %>
+                <%= link_to "Modificar datos", edit_user_path(id:current_user.id), class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to "Perfil", users_path, class: "nav-link" %>
+                <%= link_to "Perfil", user_path(current_user), method: :get, class: "nav-link" %>
               </li>
             <%end %>
             <%= link_to "Cerrar sesión", logout_path, method: :post, class: "nav-link" %>
