@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   @root_url = "/categories/index"
+
   layout 'application'
   add_flash_types :notice
 

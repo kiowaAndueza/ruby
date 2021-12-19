@@ -17,6 +17,11 @@
         <h1 id="Titulo" class="text-dark">
           Somos8
         </h1>
+        <h5>
+          <%if current_user %>
+            Bienvenido/a <%= current_user.username %>
+          <%end %>
+        </h5>
       </a>
     </div>
 
@@ -28,14 +33,35 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "Usuarios", users_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
             <%= link_to "Categorías", category_index_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Artículos", article_index_path, class: "nav-link" %>
           </li>
+
+
+          <% if !user_authenticated? %>
+            <li class="nav-item">
+              <%= link_to "Regístrate", new_user_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Iniciar sesión", login_path, class: "nav-link" %>
+            </li>
+          <%else %>
+            <% if is_admin? %>
+              <li class="nav-item">
+                <%= link_to "Usuarios", users_path, class: "nav-link" %>
+              </li>
+            <%else %>
+              <li class="nav-item">
+                <%= link_to "Modificar datos", users_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Perfil", users_path, class: "nav-link" %>
+              </li>
+            <%end %>
+            <%= link_to "Cerrar sesión", logout_path, method: :post, class: "nav-link" %>
+          <% end %>
         </ul>
       </div>
     </nav>

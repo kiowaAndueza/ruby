@@ -29,8 +29,6 @@ gem 'bootstrap'
 # Popper_js
 gem 'popper_js'
 
-
-gem 'devise'
 # Jquery-rails
 gem 'jquery-rails'
 # Use Active Storage variant

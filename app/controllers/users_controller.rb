@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  before_action :user_not_authenticated?, only: [:new, :create]
+  before_action :is_admin?, only: [:show, :index, :create, :update, :destroy, :edit]
+  before_action :is_me?, only: [:show, :update, :edit]
   # GET /users or /users.json
   def index
     @users = User.all
@@ -24,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to @user, notice: "El usuario se ha creado de forma correcta." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -55,6 +58,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -63,6 +67,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email,:password, :image)
+      params.require(:user).permit(:username, :email, :password, :image, :admin)
     end
 end

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  has_secure_password
+
   PASSWORD_FORMAT = /\A
   (?=.{6,15})          # Must contain 6 or more characters
   (?=.*\d)           # Must contain a digit
@@ -7,7 +10,6 @@ class User < ApplicationRecord
   (?=.*[[:^alnum:]]) # Must contain a symbol
 /x
 
-  has_secure_password
 
   validates :email, :username, presence: true, uniqueness: true
   validates :password, presence: true

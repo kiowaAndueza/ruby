@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  #resources :sessions
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  post 'logout', to: 'sessions#destroy'
+  resources :sessions, only: [:create, :destroy, :new]
 
   resources :users
-  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "categories#index"
   get 'categories/index', to: 'categories#index' , as: :category_index
