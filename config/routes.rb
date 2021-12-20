@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "sessions#new"
+  root to: "users#index"
   get 'categories/index', to: 'categories#index' , as: :category_index
   get 'categories/show', to: 'categories#show'
   get 'categories/new', to: 'categories#new', as: :new_category
