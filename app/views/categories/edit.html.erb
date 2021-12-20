@@ -3,12 +3,16 @@
     <div class="col-md-10 col-xs-12 py-4">
       <div class="row">
         <div class="col-12 text-center">
-          <h1 class="mb-2">Editar categoria</h1>
-          <hr class="teal accent-3 mb-4 mt-0 mx-auto border-dark" style="width: 200px;">
+          <% if user_authenticated? && is_admin?%>
+            <h1 class="mb-2">Editar categoria</h1>
+            <hr class="teal accent-3 mb-4 mt-0 mx-auto border-dark" style="width: 200px;">
 
-          <div class="col-12">
-            <%= render "categories/form" %>
-          </div>
+            <div class="col-12">
+              <%= render "categories/form" %>
+            </div>
+          <%else %>
+            <h1 class="mb-2">ACCESO RESTRINGIDO</h1>
+          <%end %>
 
         </div>
       </div>

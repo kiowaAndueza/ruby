@@ -1,28 +1,32 @@
 <section class="offset-md-2 col-md-8 col-xs-12">
   <div class="d-flex justify-content-center mt-5 content">
     <div class="col-12 py-4">
-      <div class="w-100 text-center mb-3">
-        <h1>Información de la categoría</h1>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto border-dark" style="width: 200px;">
-      </div>
+      <% if user_authenticated? && is_admin?%>
+        <div class="w-100 text-center mb-3">
+          <h1>Información de la categoría</h1>
+          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto border-dark" style="width: 200px;">
+        </div>
 
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <div>
-            <p> TITULO: <%= @categories.title %> </p>
-          </div>
-          <div>
-            <p> <%= image_tag url_for(@categories.img), style:"width: 120px;height: auto; margin-top:20px" %> </p>
-          </div>
-          <div>
-            <p> URL: <%= @categories.url %> </p>
-          </div>
-          <div>
-            <%= link_to "Editar", edit_category_path(@categories.id), class: "btn btn-success ml-2" %>
-            <%= link_to "Eliminar", @categories, method: :delete, class: "btn btn-danger ml-2" %>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div>
+              <p> TITULO: <%= @categories.title %> </p>
+            </div>
+            <div>
+              <p> <%= image_tag url_for(@categories.img), style:"width: 120px;height: auto; margin-top:20px" %> </p>
+            </div>
+            <div>
+              <p> URL: <%= @categories.url %> </p>
+            </div>
+            <div>
+              <%= link_to "Editar", edit_category_path(@categories.id), class: "btn btn-success ml-2" %>
+              <%= link_to "Eliminar", @categories, method: :delete, class: "btn btn-danger ml-2" %>
+            </div>
           </div>
         </div>
-      </div>
+      <%else %>
+        <h1 class="mb-2">ACCESO RESTRINGIDO</h1>
+      <%end %>
     </div>
   </div>
 </section>

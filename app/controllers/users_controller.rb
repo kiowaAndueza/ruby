@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :user_not_authenticated?, only: [:new, :create]
   before_action :is_admin?, only: [:show, :index, :create, :update, :destroy, :edit]
-  before_action :is_me?, only: [:show, :update, :edit]
   # GET /users or /users.json
   def index
     @users = User.all

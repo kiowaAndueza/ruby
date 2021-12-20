@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :is_admin?, only: [:show, :index, :new, :create, :update, :delete, :edit]
   @root_url = "/articles/index"
   layout 'application'
   add_flash_types :notice

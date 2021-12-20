@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+
+  before_action :is_admin?, only: [:show, :index, :new, :create, :update, :delete, :edit]
   @root_url = "/categories/index"
 
   layout 'application'

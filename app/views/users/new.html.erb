@@ -3,7 +3,7 @@
     <div class="col-md-10 col-xs-12 py-4">
       <div class="row">
         <div class="col-12 text-center">
-          <% if !user_authenticated? | is_admin? %>
+          <% if user_authenticated? && is_admin? %>
             <h1 class="mb-2">Crear usuario</h1>
             <hr class="teal accent-3 mb-4 mt-0 mx-auto border-dark" style="width: 200px;">
             <div class="col-12 mb-4 text-end">
@@ -11,7 +11,6 @@
             </div>
           <%else %>
             <h1>¡ACCESSO RESTRINGIDO!</h1>
-            <%= link_to 'Volver', root_path, class: "btn btn-info" %>
           <%end %>
         </div>
       </div>
