@@ -18,6 +18,14 @@
               <p> URL: <%= @articles.url %> </p>
             </div>
             <div>
+              <p> Isla: <%= @articles.island %> </p>
+              <p> Categoría: <%= @articles.category_id %> </p>
+              <p> Url externa: <%= @articles.exturl %> </p>
+            </div>
+            <div>
+              <p> Información: <%= @articles.info %> </p>
+            </div>
+            <div>
               <%= link_to "Editar", edit_article_path(@articles.id), class: "btn btn-success ml-2" %>
               <%= link_to "Eliminar", @articles, method: :delete, class: "btn btn-danger ml-2" %>
             </div>
